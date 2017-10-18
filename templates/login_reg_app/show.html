@@ -4,17 +4,30 @@
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width" />
             <title>Users</title>
+            {% load static %}
+            <link rel="stylesheet" href="{% static 'login_reg_app/css/main.css' %}" type="text/css" media="all" />
         </head>
         <body>
+            {% if loggedIn %}
+                <a href="/logout" >Log out</a>
+            {% endif %}
             {% for message in messages %}
                 <p style="color: green;">{{ message }}</p>
             {% endfor %}
             <h2>Users:</h2>
             {% for user in users %}
-                <div style="border: 1px solid black; padding: 10px; margin: 10px; width: 50%;">
+                <div>
                     <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
                     <p>Email: {{ user.email_address }}</p>
+                    <a href="/show/{{ user.id }}">Show</a>
+                    {% if request.session.id == user.id %}
+                        <a href="/edit/{{ user.id }}">Edit</a>
+                        <a href="/destroy/{{ user.id }}">Delete</a>
+                    {% endif %}
                 </div>
             {% endfor %}
+            {% if not loggedIn %}
+                <a href="/" >Go back</a>
+            {% endif %}
         </body>
     </html>

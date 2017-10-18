@@ -1,0 +1,26 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <title>Edit User</title>
+            {% load static %}
+            <link rel="stylesheet" href="{% static 'login_reg_app/css/main.css' %}" type="text/css" media="all" />
+        </head>
+        <body>
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+            <form action="/update/{{ user.id }}" method="post" accept-charset="utf-8">
+                {% csrf_token %}
+                <label>First name: <input type="text" name="first_name" value="{{ user.first_name }}" /></label>
+                <label>Last name: <input type="text" name="last_name" value="{{ user.last_name }}" /></label>
+                <label>Email: <input type="text" name="email_address" value="{{ user.email_address }}" /></label>
+                <label>Current password: <input type="password" name="password_current"/></label>
+                <label>New password: <input type="password" name="password_new"/> </label>
+                <label>Confirm new password: <input type="password" name="password_confirm"/></label>
+                <label><input type="submit" value="Save" /></label>
+            </form>
+            <a href="/show" >Go back</a>
+        </body>
+    </html>

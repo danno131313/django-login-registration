@@ -1,0 +1,24 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <title>Show User</title>
+            {% load static %}
+            <link rel="stylesheet" href="{% static 'login_reg_app/css/main.css' %}" type="text/css" media="all" />
+        </head>
+        <body>
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+            <div>
+                <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+                <p>Email: {{ user.email_address }} </p>
+                {% if request.session.id == user.id %}
+                    <a href="/edit/{{ user.id }}">Edit</a>
+                    <a href="/destroy/{{ user.id }}">Delete</a>
+                {% endif %}
+            </div>
+            <a href="/show" >Go back</a>
+        </body>
+    </html>
