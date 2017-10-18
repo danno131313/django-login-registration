@@ -1,0 +1,23 @@
+form {
+    margin: 20px 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+form * {
+    padding: 5px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+}
+ .error {
+     color: red;
+ }
+
+ .success {
+     color: green;
+ }

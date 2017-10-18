@@ -1,0 +1,20 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <title>Users</title>
+        </head>
+        <body>
+            {% for message in messages %}
+                <p style="color: green;">{{ message }}</p>
+            {% endfor %}
+            <h2>Users:</h2>
+            {% for user in users %}
+                <div style="border: 1px solid black; padding: 10px; margin: 10px; width: 50%;">
+                    <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
+                    <p>Email: {{ user.email_address }}</p>
+                </div>
+            {% endfor %}
+        </body>
+    </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'login_reg_app/css/main.css' %}" type="text/css" media="all" />
+    </head>
+    <body>
+        {% for message in messages %}
+            <p class={{ message.tags }}>{{ message }}</p>
+        {% endfor %}
+        <h2>Register</h2>
+        <form action="/register" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            <label>First Name: <input type="text" name="first_name"></label>
+            <label>Last Name: <input type="text" name="last_name"></label>
+            <label>Email address: <input type="text" name="email_address"></label>
+            <label>Password: <input type="password" name="password"></label>
+            <label>Confirm Password: <input type="password" name="password_confirm"></label>
+            <input type="submit" name="submit" value="Submit" />
+        </form>
+        <h2>Login</h2>
+        <form action="/login" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            <label>Email address: <input type="text" name="email_address"></label>
+            <label>Password: <input type="password" name="password"></label>
+            <input type="submit" name="submit" value="Submit" />
+        </form>
+    </body>
+</html>
