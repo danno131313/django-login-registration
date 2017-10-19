@@ -25,7 +25,32 @@ label {
 
 div {
     border: 1px solid black;
+    box-sizing: border-box;
     padding: 10px;
     margin: 10px;
     width: 50%;
+}
+
+body {
+    padding: 20px;
+    margin: 0;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0 auto;
+}
+
+#navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+#navbar * {
+    margin: 0;
+    text-decoration: none;
 }

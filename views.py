@@ -28,6 +28,7 @@ def register(request):
         # Create new user
         user = User.objects.create(first_name=first_name, last_name=last_name, email_address=email_address, password=password)
 
+        # Add user's info to session (login)
         request.session['id'] = user.id
         request.session['email'] = user.email_address
         request.session['name'] = user.first_name
